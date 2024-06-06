@@ -1,18 +1,14 @@
-import { Injectable, Logger } from '@nestjs/common';
-import { PlexLibraryItem } from '../../../modules/api/plex-api/interfaces/library.interfaces';
-import { ServarrService } from '../../../modules/api/servarr-api/servarr.service';
-import {
-  Application,
-  Property,
-  RuleConstants,
-} from '../constants/rules.constants';
-import { EPlexDataType } from '../../api/plex-api/enums/plex-data-type-enum';
-import { PlexApiService } from '../../api/plex-api/plex-api.service';
+import {Injectable, Logger} from '@nestjs/common';
+import {PlexLibraryItem} from '../../../modules/api/plex-api/interfaces/library.interfaces';
+import {ServarrService} from '../../../modules/api/servarr-api/servarr.service';
+import {Application, Property, RuleConstants,} from '../constants/rules.constants';
+import {EPlexDataType} from '../../api/plex-api/enums/plex-data-type-enum';
+import {PlexApiService} from '../../api/plex-api/plex-api.service';
 import _ from 'lodash';
-import { TmdbApiService } from '../../../modules/api/tmdb-api/tmdb.service';
-import { TmdbIdService } from '../../../modules/api/tmdb-api/tmdb-id.service';
-import { PlexMetadata } from '../../../modules/api/plex-api/interfaces/media.interface';
-import { SonarrSeason } from '../../../modules/api/servarr-api/interfaces/sonarr.interface';
+import {TmdbApiService} from '../../../modules/api/tmdb-api/tmdb.service';
+import {TmdbIdService} from '../../../modules/api/tmdb-api/tmdb-id.service';
+import {PlexMetadata} from '../../../modules/api/plex-api/interfaces/media.interface';
+import {SonarrSeason} from '../../../modules/api/servarr-api/interfaces/sonarr.interface';
 
 @Injectable()
 export class SonarrGetterService {
@@ -240,6 +236,18 @@ export class SonarrGetterService {
                   : false;
               } else {
                 false;
+              }
+            }
+            case 'season_ended': {
+              // Checks if the season has a season finale
+              if ([EPlexDataType.EPISODES, EPlexDataType.SEASONS].includes(dataType)) {
+                if (dataType === EPlexDataType.EPISODES) {
+                  return episode?.finaleType ? true : false;
+                } else {
+                  return season?.finaleType ? true : false;
+                }
+              } else {
+                return false;
               }
             }
           }

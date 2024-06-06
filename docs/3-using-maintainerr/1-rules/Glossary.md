@@ -434,7 +434,6 @@ The key is used for identification in Yaml rule files.
 - Key: Sonarr.part_of_latest_season
 - Availability: seasons, episodes
 - Type: boolean
--
 
 #### Base file path
 
@@ -443,6 +442,14 @@ The key is used for identification in Yaml rule files.
 - Key: Sonarr.filePath
 - Availability: movies, seasons, episodes
 - Type: text
+
+#### Check if Season has Ended
+
+Determines if the season or episode in Sonarr has reached its season finale.
+
+- Key: Sonarr.season_ended
+- Availability: seasons, episodes
+- Type: boolean
 
 ### Overseerr
 

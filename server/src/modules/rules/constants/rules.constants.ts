@@ -547,6 +547,14 @@ export class RuleConstants {
           mediaType: MediaType.SHOW,
           type: RuleType.TEXT,
         } as Property,
+        {
+          id: 15,
+          name: 'seasonEnded',
+          humanName: 'Season has a Season Finale',
+          mediaType: MediaType.SHOW,
+          type: RuleType.BOOL,
+          showType: [EPlexDataType.EPISODES, EPlexDataType.SEASONS],
+        } as Property,
       ],
     },
     {
