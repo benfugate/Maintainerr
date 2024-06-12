@@ -444,6 +444,14 @@ The key is used for identification in Yaml rule files.
 - Availability: movies, seasons, episodes
 - Type: text
 
+#### Season number
+
+> The season number associated with an episode or season
+
+- Key: Sonarr.season_number
+- Availability: seasons, episodes
+- Type: number
+
 ### Overseerr
 
 #### Requested by user (Plex or local username)

@@ -242,6 +242,15 @@ export class SonarrGetterService {
                 false;
               }
             }
+            case 'season_number': {
+              if (dataType === EPlexDataType.SEASONS) {
+                return season?.seasonNumber || null;
+              } else if (dataType === EPlexDataType.EPISODES) {
+                return episode?.seasonNumber || null;
+              } else {
+                return null;
+              }
+            }
           }
         } else return null;
       } else {
